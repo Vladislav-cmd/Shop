@@ -1,0 +1,22 @@
+# кодировка на сайте
+ServerSignature Off
+AddDefaultCharset UTF-8
+
+Options -MultiViews # можем обращаться к файлу без их расширения
+RewriteEngine On
+# после какой папки можем обращаться к файлам без расширения
+RewriteBase /
+
+# Несколько условий для работы с папками
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# делаем так, чтобы '?=url' не надо было бы печатать в URL
+# чтобы просто писать home/index/alex
+
+RewriteRule ^(.+)$ index.php?url=$1
+# ErrorDocument 404 /error.php
+
+
+
+# тоже НЕ РАБОТАЕТ У МЕНЯ
